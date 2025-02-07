@@ -40,8 +40,9 @@ jobs:
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{matrix.ruby}}
-          bundler-cache: true
           rubygems: 3.3.26 # for ruby 2.5
+      - run: gem install jar-dependencies
+      - run: bundle
       - run: bundle exec rake test
 
   # borrowed from nokogiri/.github/workflows/downstream.yml
